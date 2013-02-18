@@ -29,9 +29,16 @@ class MarkdownHelper extends AppHelper {
     }
 
     /**
+     * htmlize
+     *
+     */
+    public function htmlize($markdownText){
+        return Markdown($markdownText);
+    }
+
+    /**
      * loadFile
      *
-     * @param $markdownFile
      */
     public function loadFile($markdownFile, $viewVars = array()){
         $exts = $this->_getExtensions();
@@ -40,8 +47,8 @@ class MarkdownHelper extends AppHelper {
         }
         foreach ($exts as $ext) {
             if (file_exists($this->settings['markdownFilePath'] . $markdownFile . $ext)) {
-                $md = Markdown(file_get_contents($this->settings['markdownFilePath'] . $markdownFile . $ext));
-                file_put_contents($this->settings['tempPath'] . $markdownFile, $md);
+                $php = $this->htmlize(file_get_contents($this->settings['markdownFilePath'] . $markdownFile . $ext));
+                file_put_contents($this->settings['tempPath'] . $markdownFile, $php);
                 ob_start();
                 extract($viewVars);
                 include $this->settings['tempPath'] . $markdownFile;
