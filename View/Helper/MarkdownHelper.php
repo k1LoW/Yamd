@@ -51,7 +51,7 @@ class MarkdownHelper extends AppHelper {
         $cacheKey = $markdownFile . '.' . $lang;
 
         if (Configure::read('debug') == 0 && Cache::read($cacheKey, $this->settings['cacheConfig'])) {
-            return Cache::read($markdownFile, $this->settings['cacheConfig']);
+            return Cache::read($cacheKey, $this->settings['cacheConfig']);
         }
         foreach ($exts as $ext) {
             $filePath = $this->settings['markdownFilePath'] . $lang . DS . $markdownFile . $ext;
