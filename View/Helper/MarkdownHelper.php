@@ -47,7 +47,13 @@ class MarkdownHelper extends AppHelper {
         $exts = $this->_getExtensions();
         $language = Configure::read('Config.language');
         $catalog = $this->l10n->catalog($language);
-        $lang = $catalog['locale'];
+        if (!empty($catalog['locale'])) {
+            $lang = $catalog['locale'];
+        } elseif (!empty($catalog['localeFallback'])) {
+            $lang = $catalog['localeFallback'];
+        } else {
+            $lang = 'eng';
+        }
         $cacheKey = $markdownFile . '.' . $lang;
 
         if (Configure::read('debug') == 0 && Cache::read($cacheKey, $this->settings['cacheConfig'])) {
