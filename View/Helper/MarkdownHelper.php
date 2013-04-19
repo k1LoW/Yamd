@@ -2,6 +2,8 @@
 App::uses('AppHelper', 'View/Helper');
 App::uses('Folder', 'Utility');
 App::uses('L10n', 'I18n');
+require_once(dirname(__FILE__) . '/../../vendor/michelf/php-markdown-extra/markdown.php');
+
 class MarkdownHelper extends AppHelper {
 
     public $helpers = array('Html', 'Form');

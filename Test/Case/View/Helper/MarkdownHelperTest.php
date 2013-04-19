@@ -7,19 +7,13 @@ App::uses('View', 'View');
 class YamdTestController extends Controller {
     public $name = 'Yamd';
     public $uses = null;
+    public $helpers = array('Yamd.Markdown');
 }
 
 class MarkdownHelperTest extends CakeTestCase {
 
     public function setUp() {
         parent::setUp();
-        if (!function_exists('Markdown')) {
-            file_put_contents(
-                TMP . 'tests' . DS . 'markdown.php',
-                file_get_contents('https://raw.github.com/michelf/php-markdown/extra-stable/markdown.php')
-            );
-            require_once TMP . 'tests' . DS . 'markdown.php';
-        }
         $controller = new Controller;
         $View = new View($controller);
         $options = array('markdownFilePath' => TMP . 'tests' . DS);
