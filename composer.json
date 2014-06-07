@@ -27,5 +27,8 @@
     ],
     "require": {
         "michelf/php-markdown-extra": "1.2.*"
-    }
+    },
+    "require-dev": {
+		"phpunit/phpunit": "3.7.*"
+	}
 }

@@ -2,10 +2,11 @@ language: php
 
 php:
   - 5.3
+  - 5.4
 
 env:
-  - DB=mysql CAKEPHP=2.2.7
-  - DB=mysql CAKEPHP=2.3.2
+  - DB=mysql CAKEPHP=2.3.10
+  - DB=mysql CAKEPHP=2.4.9
 
 before_script:
   - composer install
@@ -19,6 +20,7 @@ before_script:
     'Plugin' => array('/home/travis/build/k1LoW/'),
     ));
     CakePlugin::loadAll();
+    ini_set('include_path',  '/home/travis/build/k1LoW/Yamd/vendor/phpunit/phpunit' . PATH_SEPARATOR . ini_get('include_path'));
     " > cakephp/app/Config/bootstrap.php
   - echo "<?php
     class DATABASE_CONFIG {
