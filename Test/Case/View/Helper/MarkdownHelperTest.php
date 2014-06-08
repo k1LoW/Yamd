@@ -1,4 +1,7 @@
 <?php
+if (file_exists(dirname(__FILE__) . '/../../../../vendor/autoload.php')) {
+    require_once(dirname(__FILE__) . '/../../../../vendor/autoload.php');
+}
 App::uses('Router', 'Routing');
 App::uses('MarkdownHelper', 'Yamd.View/Helper');
 App::uses('Controller', 'Controller');

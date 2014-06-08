@@ -2,7 +2,6 @@
 App::uses('AppHelper', 'View/Helper');
 App::uses('Folder', 'Utility');
 App::uses('L10n', 'I18n');
-require_once(dirname(__FILE__) . '/../../vendor/autoload.php');
 use \Michelf\MarkdownExtra;
 
 class MarkdownHelper extends AppHelper {
